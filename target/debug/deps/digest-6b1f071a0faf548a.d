@@ -1,0 +1,10 @@
+/home/kriger/rirnha/rinha/target/debug/deps/digest-6b1f071a0faf548a.rmeta: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/digest.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/dyn_digest.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/errors.rs
+
+/home/kriger/rirnha/rinha/target/debug/deps/libdigest-6b1f071a0faf548a.rlib: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/digest.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/dyn_digest.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/errors.rs
+
+/home/kriger/rirnha/rinha/target/debug/deps/digest-6b1f071a0faf548a.d: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/digest.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/dyn_digest.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/errors.rs
+
+/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/lib.rs:
+/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/digest.rs:
+/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/dyn_digest.rs:
+/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/digest-0.8.1/src/errors.rs:
