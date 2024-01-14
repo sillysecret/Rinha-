@@ -144,6 +144,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b42b6fa04a440b495c8b04d0e71b707c585f83cb9cb28cf8cd0d976c315e31b4"
 dependencies = [
  "powerfmt",
+ "serde",
 ]
 
 [[package]]
@@ -537,6 +538,7 @@ name = "rinha"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "serde",
  "time",
  "tokio",
  "uuid",
@@ -804,6 +806,7 @@ checksum = "5e395fcf16a7a3d8127ec99782007af141946b4795001f876d54fb0d55978560"
 dependencies = [
  "atomic",
  "getrandom",
+ "serde",
 ]
 
 [[package]]

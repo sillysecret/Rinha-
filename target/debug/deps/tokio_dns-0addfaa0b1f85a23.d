@@ -1,8 +1,0 @@
-/home/kriger/rirnha/rinha/target/debug/deps/tokio_dns-0addfaa0b1f85a23.rmeta: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/endpoint.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/net.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/resolver.rs
-
-/home/kriger/rirnha/rinha/target/debug/deps/tokio_dns-0addfaa0b1f85a23.d: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/endpoint.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/net.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/resolver.rs
-
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/lib.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/endpoint.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/net.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/tokio-dns-unofficial-0.3.1/src/resolver.rs:

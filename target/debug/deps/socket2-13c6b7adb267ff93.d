@@ -1,9 +1,0 @@
-/home/kriger/rirnha/rinha/target/debug/deps/socket2-13c6b7adb267ff93.rmeta: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/sockaddr.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/socket.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/utils.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/sys/unix.rs
-
-/home/kriger/rirnha/rinha/target/debug/deps/socket2-13c6b7adb267ff93.d: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/sockaddr.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/socket.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/utils.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/sys/unix.rs
-
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/lib.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/sockaddr.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/socket.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/utils.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/socket2-0.3.19/src/sys/unix.rs:
