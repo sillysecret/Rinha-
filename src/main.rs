@@ -106,7 +106,9 @@ async fn create(State(localbd): State<AppState>,Json(payload): Json<Newp>) -> im
          
 }
 
-async fn count() -> impl IntoResponse {
-    (StatusCode::NOT_FOUND, "ok")
-}
+async fn count(State(localbd): State<AppState>,) -> impl IntoResponse {
+    let tam = localbd.lock().await.len().to_string(); 
+    
+    (StatusCode::OK, tam)
+} 
 
