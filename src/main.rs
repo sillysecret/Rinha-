@@ -1,33 +1,48 @@
 use std::{collections::HashMap, vec};
-use ::serde::Serialize;
-use uuid::{Uuid};
-use time::{Date};
+
+use serde::{Serialize, Deserialize};
+
+use uuid::Uuid;
+
+use time::Date;
+
 use time::macros::date;
+
 use std::sync::Arc;
 
-
-
-
+use tokio::sync::Mutex;
 use axum::{
     routing::{get, post},
     http::StatusCode,
     response::IntoResponse,
-    Router,
-    extract::{State,Path}, 
-    Json,
-
+    Router, 
+    extract::{State,Path}, Json,
 };
+
+time::serde::format_description!(date_format, Date, "[year]-[month]-[day]");
+
 #[derive(Serialize,Clone)]
 struct Pessoa {
     pub id: Uuid,
     pub nome: String,
     pub apelido:String,
+    #[serde(with = "date_format" )]
     pub nascimento: Date,
     pub stack: Vec<String>
 }
 
-             
-type AppState = Arc<HashMap<Uuid,Pessoa>>;
+
+
+#[derive(Serialize,Clone,Deserialize)]
+struct Newp{
+    pub nome: String,
+    pub apelido:String,
+    #[serde(with = "date_format" )]
+    pub nascimento: Date,
+    pub stack: Vec<String>
+}
+ 
+type AppState = Arc<Mutex<HashMap<Uuid,Pessoa>>>;
 
 #[tokio::main]
 async fn main() {
@@ -39,6 +54,7 @@ async fn main() {
         nascimento: date!(2004 - 05 - 11),
         stack: vec!["Rust".to_string(), "Java".to_string()]
     };
+
     
     let mut localbd : HashMap<Uuid,Pessoa> = HashMap::new(); 
     
@@ -46,7 +62,7 @@ async fn main() {
     
     localbd.insert(eu.id,eu);
 
-    let app_state : AppState = Arc::new(localbd);
+    let app_state : AppState = Arc::new(Mutex::new(localbd));
 
     // build our applica wtion with a single route
     let app = Router::new()
@@ -62,12 +78,9 @@ async fn main() {
     axum::serve(listener, app).await.unwrap();
 }  
 
-async fn find(
-    State(localbd): State<AppState>,
-    Path(id):Path<Uuid>,
-) -> impl IntoResponse {
+async fn find(State(localbd): State<AppState>,Path(id):Path<Uuid>,) -> impl IntoResponse {
                     
-    match localbd.get(&id){
+    match localbd.lock().await.get(&id){
         Some(pessoa) => Ok(Json(pessoa.clone())), 
         None => Err(StatusCode::NOT_FOUND),
     }
@@ -75,11 +88,22 @@ async fn find(
 }
 
 async fn search() -> impl IntoResponse {
+    
     (StatusCode::NOT_FOUND, "ok")
 }
 
-async fn create() -> impl IntoResponse {
-    (StatusCode::NOT_FOUND, "ok")
+async fn create(State(localbd): State<AppState>,Json(payload): Json<Newp>) -> impl IntoResponse {
+    let id = Uuid::now_v7();
+    let newp = Pessoa {
+        id, 
+        nome: payload.nome,
+        apelido: payload.apelido,
+        nascimento:payload.nascimento,
+        stack:payload.stack,
+    };
+    localbd.lock().await.insert(id, newp.clone());
+    (StatusCode::OK,Json(newp))
+         
 }
 
 async fn count() -> impl IntoResponse {
