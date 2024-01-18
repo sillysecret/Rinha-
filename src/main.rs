@@ -1,19 +1,18 @@
-use std::{collections::HashMap, vec};
+use std::env;
 
+use database::Repository;
 use serde::{Serialize, Deserialize};
 
 use uuid::Uuid;
 
 use time::Date;
-
-use time::macros::date;
-
+use axum::extract::Query;
 use std::sync::Arc;
 
 
 mod database;
 
-use tokio::sync::Mutex;
+ 
 use axum::{
     routing::{get, post},
     http::StatusCode,
@@ -24,8 +23,8 @@ use axum::{
 
 time::serde::format_description!(date_format, Date, "[year]-[month]-[day]");
 
-#[derive(Serialize,Clone)]
-struct Pessoa {
+#[derive(Serialize,Clone,sqlx::FromRow)]
+pub struct Pessoa {
     pub id: Uuid,
     pub nome: String,
     pub apelido:String,
@@ -36,24 +35,33 @@ struct Pessoa {
 
 
 
-#[derive(Serialize,Clone,Deserialize)]
-struct Newp{
+#[derive(Serialize,Clone,Deserialize,sqlx::FromRow,)]
+pub struct Newp{
     pub nome: String,
     pub apelido:String,
     #[serde(with = "date_format" )]
     pub nascimento: Date,
     pub stack: Option<Vec<String>>
 }
- 
-type AppState = Arc<Mutex<HashMap<Uuid,Pessoa>>>;
+
+
+#[derive(Deserialize)]
+pub struct Querysearch{
+    pub query: String
+}
+
+
+type AppState = Arc<Repository>;
 
 #[tokio::main]
 async fn main() {
-
-    let mut localbd : HashMap<Uuid,Pessoa> = HashMap::new(); 
     
+    let port =env::var("DATABASE_URL")
+        .unwrap_or(String::from("postgres://rinha:rinha@localhost:5432/rinha"));
    
-    let app_state : AppState = Arc::new(Mutex::new(localbd));
+    let db = Repository::conn(port).await;
+
+    let app_state = Arc::new(db);
 
     // build our applica wtion with a single route
     let app = Router::new()
@@ -71,55 +79,55 @@ async fn main() {
 
 async fn find(State(localbd): State<AppState>,Path(id):Path<Uuid>,) -> impl IntoResponse {
                     
-    match localbd.lock().await.get(&id){
-        Some(pessoa) => Ok(Json(pessoa.clone())), 
-        None => Err(StatusCode::NOT_FOUND),
+    match localbd.find(id).await{
+        Ok(Some(pessoa)) => Ok(Json(pessoa.clone())), 
+        Ok(None) => Err(StatusCode::NOT_FOUND),
+        Err(_) => Err(StatusCode::INTERNAL_SERVER_ERROR),
     }
     
 }
 
-async fn search() -> impl IntoResponse {
-     
-    (StatusCode::NOT_FOUND, "ok")
+async fn search(
+    State(localbd): State<AppState>, 
+    Query(Querysearch { query }) :Query<Querysearch>,) 
+    -> impl IntoResponse {
+        match localbd.search(query).await {
+            Ok(pessoa) => Ok(Json(pessoa)),
+            Err(_)=> Err(StatusCode::INTERNAL_SERVER_ERROR),
+        }
 }
-
 async fn create(State(localbd): State<AppState>,Json(payload): Json<Newp>) -> impl IntoResponse {
     
     if payload.nome.len() > 100 || payload.apelido.len() > 32{
-        return Err((StatusCode::UNPROCESSABLE_ENTITY,Json(payload)));
+        return Err(StatusCode::UNPROCESSABLE_ENTITY);
     }
 
     match payload.stack {
         Some(ref stack)=>{
             if stack.iter().any(|x| x.len() > 32){
-                return Err((StatusCode::UNPROCESSABLE_ENTITY,Json(payload)));
- 
+                return Err(StatusCode::UNPROCESSABLE_ENTITY);
             }
         }
-
         None =>{}
     }
 
-    let id = Uuid::now_v7();
-    let newp = Pessoa {
-        id, 
-        nome: payload.nome,
-        apelido: payload.apelido,
-        nascimento:payload.nascimento,
-        stack:payload.stack,
-    };
+    match localbd.create(payload).await{
+        Ok(pessoa) => Ok(Json(pessoa.clone())), 
+        Err(sqlx::Error::Database(err)) if err.is_unique_violation() => 
+        {
+            Err(StatusCode::UNPROCESSABLE_ENTITY)
+        }
+        Err(_) => Err(StatusCode::INTERNAL_SERVER_ERROR),
+    }
 
-
-
-    localbd.lock().await.insert(id, newp.clone());
-
-    Ok((StatusCode::OK,Json(newp)))
-         
 }
 
 async fn count(State(localbd): State<AppState>,) -> impl IntoResponse {
-    let tam = localbd.lock().await.len().to_string(); 
+    match localbd.count().await{
+        Ok(count) => Ok(Json(count)),
+        Err(_)=> Err(StatusCode::INTERNAL_SERVER_ERROR),
+    }  
     
-    (StatusCode::OK, tam)
+
 } 
 

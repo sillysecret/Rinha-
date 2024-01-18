@@ -1,0 +1,10 @@
+/home/kriger/rirnha/rinha/target/debug/deps/version_check-80ae788ee6dc7f33.rmeta: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/version.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/channel.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/date.rs
+
+/home/kriger/rirnha/rinha/target/debug/deps/libversion_check-80ae788ee6dc7f33.rlib: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/version.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/channel.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/date.rs
+
+/home/kriger/rirnha/rinha/target/debug/deps/version_check-80ae788ee6dc7f33.d: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/version.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/channel.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/date.rs
+
+/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/lib.rs:
+/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/version.rs:
+/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/channel.rs:
+/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/date.rs:

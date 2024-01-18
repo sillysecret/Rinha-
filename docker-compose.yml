@@ -1,14 +1,19 @@
+version: "3.5"
+
 services:
-
-  db:
-    image: postgres
-    restart: always
+  postgres:
+    container_name: rinha_backend_postgres
+    image: postgres:15
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
     environment:
-      POSTGRES_PASSWORD: example
-
-  adminer:
-    image: adminer
-    restart: always
+      POSTGRES_USER: rinha
+      POSTGRES_PASSWORD: rinha
+      POSTGRES_DB: rinha
     ports:
-      - 8080:8080
-
+      - "5432:5432"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.7"
+          memory: "1.5GB"
