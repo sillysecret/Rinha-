@@ -10,6 +10,9 @@ use time::macros::date;
 
 use std::sync::Arc;
 
+
+mod database;
+
 use tokio::sync::Mutex;
 use axum::{
     routing::{get, post},
@@ -28,7 +31,7 @@ struct Pessoa {
     pub apelido:String,
     #[serde(with = "date_format" )]
     pub nascimento: Date,
-    pub stack: Vec<String>
+    pub stack: Option<Vec<String>>
 }
 
 
@@ -39,7 +42,7 @@ struct Newp{
     pub apelido:String,
     #[serde(with = "date_format" )]
     pub nascimento: Date,
-    pub stack: Vec<String>
+    pub stack: Option<Vec<String>>
 }
  
 type AppState = Arc<Mutex<HashMap<Uuid,Pessoa>>>;
@@ -47,21 +50,9 @@ type AppState = Arc<Mutex<HashMap<Uuid,Pessoa>>>;
 #[tokio::main]
 async fn main() {
 
-    let eu = Pessoa {
-        id: Uuid::now_v7(),
-        nome: "João".to_string(),
-        apelido:"kriger".to_string(), 
-        nascimento: date!(2004 - 05 - 11),
-        stack: vec!["Rust".to_string(), "Java".to_string()]
-    };
-
-    
     let mut localbd : HashMap<Uuid,Pessoa> = HashMap::new(); 
     
-    println!("{}",eu.id);
-    
-    localbd.insert(eu.id,eu);
-
+   
     let app_state : AppState = Arc::new(Mutex::new(localbd));
 
     // build our applica wtion with a single route
@@ -88,11 +79,27 @@ async fn find(State(localbd): State<AppState>,Path(id):Path<Uuid>,) -> impl Into
 }
 
 async fn search() -> impl IntoResponse {
-    
+     
     (StatusCode::NOT_FOUND, "ok")
 }
 
 async fn create(State(localbd): State<AppState>,Json(payload): Json<Newp>) -> impl IntoResponse {
+    
+    if payload.nome.len() > 100 || payload.apelido.len() > 32{
+        return Err((StatusCode::UNPROCESSABLE_ENTITY,Json(payload)));
+    }
+
+    match payload.stack {
+        Some(ref stack)=>{
+            if stack.iter().any(|x| x.len() > 32){
+                return Err((StatusCode::UNPROCESSABLE_ENTITY,Json(payload)));
+ 
+            }
+        }
+
+        None =>{}
+    }
+
     let id = Uuid::now_v7();
     let newp = Pessoa {
         id, 
@@ -101,8 +108,12 @@ async fn create(State(localbd): State<AppState>,Json(payload): Json<Newp>) -> im
         nascimento:payload.nascimento,
         stack:payload.stack,
     };
+
+
+
     localbd.lock().await.insert(id, newp.clone());
-    (StatusCode::OK,Json(newp))
+
+    Ok((StatusCode::OK,Json(newp)))
          
 }
 
