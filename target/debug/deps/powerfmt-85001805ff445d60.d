@@ -1,9 +1,0 @@
-/home/kriger/rirnha/rinha/target/debug/deps/powerfmt-85001805ff445d60.rmeta: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/buf.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/ext.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/smart_display.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/smart_display_impls.rs
-
-/home/kriger/rirnha/rinha/target/debug/deps/powerfmt-85001805ff445d60.d: /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/lib.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/buf.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/ext.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/smart_display.rs /home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/smart_display_impls.rs
-
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/lib.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/buf.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/ext.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/smart_display.rs:
-/home/kriger/.asdf/installs/rust/1.72.1/registry/src/index.crates.io-6f17d22bba15001f/powerfmt-0.2.0/src/smart_display_impls.rs:
